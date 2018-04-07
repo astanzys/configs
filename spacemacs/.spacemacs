@@ -112,6 +112,7 @@ values."
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
    dotspacemacs-editing-style 'vim
+   dotspacemacs-mode-line-theme 'spacemacs
    ;; If non-nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -321,6 +322,13 @@ you should place your code here."
   (setq-default dotspacemacs-smartparens-strict-mode t)
   (diff-hl-flydiff-mode '(:global t))
   (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+  (with-eval-after-load 'clojure-mode
+    (define-clojure-indent
+      (context 2)
+      (GET 2)
+      (POST 2)
+      (DELETE 2)
+      (PUT 2)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
